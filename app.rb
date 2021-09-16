@@ -1,19 +1,14 @@
 def substrings(string, dictionary)
-  arr = []
+  matches = {}
 
   dictionary.each do |str|
     if string.downcase.include? str
-      arr.push(string.downcase.scan(str))
+      matches[str] = string.downcase.scan(str).length
     end
   end
   
-  # bad practice using destructive method
-  arr.each do |item|
-    item.push(item.count)
-    item.uniq!
-  end
-  p arr.to_h
+  matches
 end
 
 dictionary = ["below", "be", "down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
-substrings("DOWNTOWN Google hoWdy goose!", dictionary)
+p substrings("DOWNTOWN Google hoWdy goose!", dictionary)
